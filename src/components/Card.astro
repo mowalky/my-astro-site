@@ -3,6 +3,7 @@ export interface Props {
 	title: string;
 	body?: string;
 	href?: string;
+	completed: boolean;
 }
 
 const { href, title, body } = Astro.props as Props;
