@@ -17,7 +17,7 @@ const results = await res.json();
 <Layout title="Welcome to Astro.">
 	<main>
 	<ul role="list" class="link-card-grid">
-		{results.map((r:Post)=>(<Card title={r.title}/>))}
+		{results.map((r:Post)=>(<Card title={r.title} completed={r.completed} />))}
 		</ul>
 	</main>
 </Layout>

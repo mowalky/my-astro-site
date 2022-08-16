@@ -6,13 +6,13 @@ export interface Props {
 	completed: boolean;
 }
 
-const { href, title, body } = Astro.props as Props;
+const { href, title, body, completed } = Astro.props as Props;
 ---
 
 <li class="link-card">
-	<a href={href}>
+	<a class={completed ? 'completed':''} href={href}>
 		<h2>
-			{title}
+			{title} {completed}
 			<span>&rarr;</span>
 		</h2>
 		<p>
@@ -23,6 +23,11 @@ const { href, title, body } = Astro.props as Props;
 <style>
 	:root {
 		--link-gradient: linear-gradient(45deg, #4f39fa, #da62c4 30%, var(--color-border) 60%);
+	}
+
+	.completed {
+		background-color: green !important;
+		color: white !important;
 	}
 
 	.link-card {
