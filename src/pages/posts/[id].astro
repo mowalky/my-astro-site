@@ -1,0 +1,8 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const { id } = Astro.params;
+const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+const results = await res.json();
+---
+<h1>{results.title}</h1>
+<p>{results.body}</p>

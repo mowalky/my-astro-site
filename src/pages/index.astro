@@ -2,7 +2,7 @@
 export interface Post {
 	title:string;
 	id: number;
-	completed: boolean;
+	body: string;
 }
 
 import Layout from '../layouts/Layout.astro';
@@ -11,18 +11,18 @@ import Card from '../components/Card.astro';
 import Login from "../components/Login"
 
 
-const res = await fetch(`https://jsonplaceholder.typicode.com/todos/`);
+const res = await fetch(`https://jsonplaceholder.typicode.com/posts/`);
 const results = await res.json();
 
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-	<Login />
 	<ul role="list" class="link-card-grid">
-		{results.map((r:Post)=>(<Card title={r.title} completed={r.completed} />))}
+		{results.map(({title,body}:Post)=>(<Card title={title} body={body} />))}
 		</ul>
 	</main>
+	<Login client:visible />
 </Layout>
 
 
